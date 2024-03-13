@@ -6,14 +6,14 @@ public class InsertTransactionExample {
         public static void main(String[] args) throws SQLException {
 
             // Connect to the database
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/exampledatabase", "root", "password");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/sampledatabase", "root", "password");
 
             try {
                 // Set auto-commit to false to start a transaction
                 conn.setAutoCommit(false);
 
                 // Insert a new record into the "users" table
-                PreparedStatement stmt = conn.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)");
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO car (username, password) VALUES (?, ?, ?)");
                 stmt.setString(1, "Paul");
                 stmt.setString(2, "qwerty");
                 stmt.executeUpdate();
