@@ -7,21 +7,22 @@ public class InsertExample {
     public static void main(String[] args) throws SQLException {
 
         // Connect to the database
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/exampledatabase", "root", "password");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/sampledatabase", "root", "password");
 
         try {
 
             // Insert a new record into the "users" table
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)");
-            stmt.setString(1, "Des");
-            stmt.setString(2, "software");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO car (name, year, model) VALUES (?, ?, ?)");
+            stmt.setString(1, "BMW");
+            stmt.setString(2, "2024");
+            stmt.setString(3, "5 Series");
             stmt.executeUpdate();
 
             // Insert a new record into the "emails" table, referencing the new user
-            stmt = conn.prepareStatement("INSERT INTO emails (user_id, email) VALUES (?, ?)");
-            stmt.setInt(1, getLastInsertId(conn));
-            stmt.setString(2, "des@atu.ie");
-            stmt.executeUpdate();
+           // stmt = conn.prepareStatement("INSERT INTO emails (user_id, email) VALUES (?, ?)");
+           // stmt.setInt(1, getLastInsertId(conn));
+           // stmt.setString(2, "des@atu.ie");
+           // stmt.executeUpdate();
 
             System.out.println("Insert completed successfully.");
         } catch (SQLException ex) {
